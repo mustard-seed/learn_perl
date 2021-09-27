@@ -49,3 +49,63 @@ our $month_scalar_0 = @months;
 our $month_scalar_1 = "@months";
 print ("month_scalar_0: $month_scalar_0\n");
 print ("month_scalar_1: $month_scalar_1\n");
+
+{
+   print ("\n\nIterating through an array using an iterator.\n");
+   print ("for <ITERATOR> (<LIST OR ARRAY>) <BLOCK>\n");
+   our @continents = ("America", "Asia", "Europe", "Africa", "Australia", "Antarctica");
+   for our $name  (@continents) {
+      print ("${name}\n");
+   }
+   print ("Iterator can be used to change the value in an array.\n");
+   our @numbers = (1, 2, 3, 4, 5, 6, 7);
+   print ("Original array: @{numbers}\n");
+   our $highestIndex = $#numbers;
+   print ("The highest index in the array is $highestIndex.\n");
+   for our $value (@numbers) {
+      $value *= 2;
+   }
+   print ("After doubling: @{numbers}\n");
+}
+
+{
+   print ("\nArray operations: pop, push, shift, unshift, sort\n");
+   our @numbers = (1, 11, 12, 2, 3, 6, 4, 21, 97);
+   print ("Original array: @numbers\n");
+   print ('push @numbers, 99, 123');
+   print ("\n");
+   push @numbers, 99, 123;
+   print ("After two pushes, new numbers are added at the end: @numbers\n");
+   our $tail = pop @numbers;
+   print ("After one pop, the $tail is removed: @numbers\n");
+   print ('unshift (@numbers, 67');
+   print ("\n");
+   unshift(@numbers, 67);
+   print ("After unshift, the new value is added to the head: @numbers\n");
+   shift @numbers;
+   print ("After shift, the array becomes @numbers\n");
+   print ("Sort <Sort BLOCK> ARRAY. A new copy is returned\n");
+   my @sorted_numbers = sort {$a <=> $b} @numbers;
+   print ("After sorting: @sorted_numbers\n");
+}
+
+{
+   print ("\nHash functions\n");
+   my %where = (
+      Gary => "Dallas",
+      Lucy => "Exeter",
+      Ian  => "Reading",
+      Samantha => "Oregon"
+   );
+   print ("Key-value pairs in the hash function.\n");
+   # Use the keys function to return the keys
+   for (keys %where) {
+      print ("$_: $where{$_}\n");
+   }
+   print ("Does Lucy exist as a key?\n");
+   print (exists($where{Lucy}), "\n");
+   print ("Delete Lucy.\n");
+   delete $where{Lucy};
+   print ("Does Lucy still exist as a key?\n");
+   print (exists($where{Lucy}), "\n");
+}
